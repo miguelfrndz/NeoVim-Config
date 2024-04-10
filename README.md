@@ -4,14 +4,14 @@ Personal NeoVim Configuration.
 ## NeoVim Installation
 
 In order to download the latest version of `neovim`:
-```
+```zsh
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod u+x nvim.appimage
 ./nvim.appimage
 ```
 
 In order to create a shortcut as `nvim`:
-```
+```zsh
 sudo ln -s ./nvim.appimage /usr/bin/nvim
 ```
 
