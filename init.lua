@@ -4,6 +4,24 @@ vim.cmd("set expandtab")
 vim.cmd("set softtabstop=4")
 vim.cmd("set shiftwidth=4")
 
+-- Toggle diagnostics function
+local diagnostics_enabled = false
+vim.diagnostic.enable(false)
+
+function ToggleDiagnostics()
+  diagnostics_enabled = not diagnostics_enabled
+  if diagnostics_enabled then
+    vim.diagnostic.enable()
+    print("Diagnostics enabled")
+  else
+    vim.diagnostic.enable(false)
+    print("Diagnostics disabled")
+  end
+end
+
+-- Key mapping to toggle diagnostics
+vim.api.nvim_set_keymap('n', '<Leader>e', ':lua ToggleDiagnostics()<CR>', { noremap = true, silent = true })
+
 -- Lazy Package Manager
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
