@@ -1,7 +1,20 @@
 # NeoVim-Config
 Personal NeoVim Configuration.
 
+## Keyboard Shortcuts
+* Toggle Diagnostics (disabled by default): `<Leader>e` (by default `<Leader>` is assigned to `\`)
+* NvimTree Toggle (File Explorer, enabled by default): `<C-n>`
+* Telescope File Finder: `<C-p>`
+* Telescope Live Grep: `<C-f>`
+* Within the autocomplete functions of the selected LSP-Server:
+    - **N**ext Suggestion: `<C-n>`
+    - **P**revious Suggestion: `<C-p>`
+    - **U**p in the Suggestion Documentation: `<C-u>`
+    - **D**own in the Suggestion Documentation: `<C-d>`
+
 ## NeoVim Installation
+
+**(I suggest you rather follow the official installation steps)**
 
 In order to download the latest version of `neovim`:
 ```zsh
