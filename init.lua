@@ -50,6 +50,10 @@ local plugins = {
     {
         "nvim-tree/nvim-tree.lua", version = "*",
         lazy = false,
+        dependencies = {
+            { 'nvim-web-devicons' },
+            { 'nvim-tree/nvim-web-devicons' }
+        }
     },
     {
         'VonHeikemen/lsp-zero.nvim',
@@ -122,10 +126,26 @@ require("lazy").setup(plugins, opts)
 
 local nvim_tree = require("nvim-tree").setup()
 
-local builtin = require("telescope.builtin")
+-- Automatically close Neovim if NvimTree is the last window open
+vim.api.nvim_create_autocmd("BufEnter", {
+    nested = true,
+    callback = function()
+      if #vim.api.nvim_list_wins() == 1 and vim.bo.filetype == "NvimTree" then
+        vim.cmd("quit")
+      end
+    end
+  })
 
+-- Key mapping to toggle NvimTree
+vim.api.nvim_set_keymap('n', '<C-n>', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
+-- Open NvimTree on startup
+vim.cmd("NvimTreeOpen")
+
+local builtin = require("telescope.builtin")
+-- Key mapping to open Telescope (Find Files & Live Grep)
 vim.keymap.set('n', '<C-p>', builtin.find_files, {})
 vim.keymap.set('n', '<C-f>', builtin.live_grep, {})
 
+-- Catppuccin Color Theme
 require("catppuccin").setup()
 vim.cmd.colorscheme "catppuccin"
